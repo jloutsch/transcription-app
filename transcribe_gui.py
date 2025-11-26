@@ -167,8 +167,9 @@ class MacButton(tk.Frame):
 
 
 class TranscriptionApp:
-    def __init__(self, root):
+    def __init__(self, root, dnd_enabled=False):
         self.root = root
+        self.dnd_enabled = dnd_enabled
         self.root.title("Transcribe Anything")
         self.root.geometry("600x1050")  # Adjusted height for diarization settings
         self.root.configure(bg=COLORS['bg'])
@@ -469,7 +470,7 @@ class TranscriptionApp:
         self.drop_frame.pack(fill='both', expand=False, pady=(0, 16))
         self.drop_frame.config(height=150)  # Fixed height for drop zone
 
-        if HAS_DND:
+        if self.dnd_enabled:
             drop_text = "Drop files here or use the button below"
             self.drop_frame.drop_target_register(DND_FILES)
             self.drop_frame.dnd_bind('<<Drop>>', self.on_drop)
@@ -1045,12 +1046,19 @@ class TranscriptionApp:
 
 
 def main():
+    # Try to use drag-and-drop, fall back to regular Tk if it fails
+    dnd_enabled = False
     if HAS_DND:
-        root = TkinterDnD.Tk()
+        try:
+            root = TkinterDnD.Tk()
+            dnd_enabled = True
+        except RuntimeError:
+            print("Warning: Drag-and-drop not available, using 'Add Files' button instead")
+            root = Tk()
     else:
         root = Tk()
 
-    app = TranscriptionApp(root)
+    app = TranscriptionApp(root, dnd_enabled=dnd_enabled)
     root.mainloop()
 
 

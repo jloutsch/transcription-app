@@ -1,3 +1,6 @@
 faster-whisper
 tqdm
 tkinterdnd2
+torch
+torchaudio
+pyannote.audio
