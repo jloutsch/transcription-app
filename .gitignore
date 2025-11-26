@@ -22,6 +22,11 @@ wheels/
 venv/
 ENV/
 env/
+build_venv/
+
+# PyInstaller
+*.spec
+AppIcon.iconset/
 
 # Transcripts (but keep requirements.txt)
 transcripts/

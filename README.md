@@ -137,35 +137,45 @@ MODEL_SIZE = "medium"  # Options: tiny, base, small, medium, large-v3
 - `medium` - Good accuracy (default, ~5GB RAM)
 - `large-v3` - Best accuracy, slower (~10GB RAM)
 
-## Creating a Mac .app Bundle (Optional)
+## Creating a Standalone Mac .app (For Distribution)
 
-After running `install.sh`, you can create a double-clickable Mac application:
+Want to distribute a "just works" .app that others can download and use immediately? Run:
 
-### Using Platypus (Recommended)
+```bash
+./build_app.sh
+```
 
-1. Download and install [Platypus](https://sveinbjorn.org/platypus)
-2. Open Platypus
-3. Configure:
-   - **Script Type:** Shell
-   - **Script Path:** Browse to `/path/to/transcription-app/launch_gui.sh`
-   - **Interface:** None
-   - **Options:** Check "Runs in background"
-4. Click "Create App"
-5. Save as "Transcribe Anything.app"
+This creates `dist/Transcribe Anything.app` - a **completely standalone application** (~171MB) that includes:
+- Python runtime
+- All dependencies (faster-whisper, tkinter, etc.)
+- App icon
+- Everything needed to run
 
-The created .app will work **only on your machine** since it contains absolute paths. For sharing with others, distribute the repository and have them run `install.sh` on their machine.
+### Distributing the App
 
-### Distribution Best Practices
+1. **Build the app:** `./build_app.sh`
+2. **Compress it:** Right-click `dist/Transcribe Anything.app` → Compress
+3. **Share the .zip file:** Upload to GitHub Releases, Dropbox, etc.
+4. **Users download and run:** Extract .zip, double-click the app
 
-When sharing this app:
-1. Share the GitHub repository link
-2. Users clone the repo and run `./install.sh`
-3. (Optional) Users create their own .app with Platypus using their `launch_gui.sh`
+**Note:** The Whisper model (~500MB-1.5GB) downloads automatically on first use.
 
-This approach ensures:
-- All dependencies are correctly installed for each system
-- Paths are configured correctly for each machine
-- Model downloads happen on first use (not bundled in repo)
+### Mac Security
+
+When users first run the app, macOS may show a security warning. Users should:
+1. Right-click the app → "Open"
+2. Or: System Settings → Privacy & Security → Click "Open Anyway"
+
+### For Personal Use (Platypus Alternative)
+
+If you only want to use this on your own machine:
+
+1. Run `./install.sh` to set up dependencies
+2. Run `./launch_gui.sh` to start the app
+3. (Optional) Use [Platypus](https://sveinbjorn.org/platypus) to create a quick launcher:
+   - Script: `launch_gui.sh`
+   - Interface: None
+   - Icon: Drag `AppIcon.icns`
 
 ## Performance Tips
 

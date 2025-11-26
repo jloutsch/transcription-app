@@ -11,7 +11,7 @@ OPTIONS = {
     'argv_emulation': True,
     'packages': ['faster_whisper', 'tkinter', 'tqdm'],
     'includes': ['tkinterdnd2'],
-    'iconfile': None,  # Add your .icns icon file path here if you have one
+    'iconfile': 'AppIcon.icns',
     'plist': {
         'CFBundleName': 'Audio Transcriber',
         'CFBundleDisplayName': 'Audio Transcriber',
