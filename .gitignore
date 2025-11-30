@@ -53,6 +53,11 @@ dist/
 # Model cache
 ~/.cache/huggingface/
 
+# Secrets and tokens
+.hf_token
+.huggingface_token
+*.token
+
 # Media files (don't commit large audio/video files)
 *.mp4
 *.mov
