@@ -1,8 +1,16 @@
 # TranscribeAnything Installation Guide
 
+## ✅ Quick Status
+
+**Good news!** The app is running successfully on your Mac (macOS 15.7.2).
+
+If you built it locally, it should open without issues. If you download the DMG from GitHub, see the methods below.
+
+---
+
 ## Opening the App on macOS
 
-Since this app is not signed with an Apple Developer certificate, macOS Gatekeeper will block it initially. Here's how to open it:
+Since this app is not signed with an Apple Developer certificate, macOS Gatekeeper may block it when downloaded from the internet. Here's how to open it:
 
 ---
 
@@ -22,16 +30,17 @@ Since this app is not signed with an Apple Developer certificate, macOS Gatekeep
 
 ## Method 2: System Settings (Alternative)
 
-If the right-click method doesn't work:
+⚠️ **Note**: On macOS Sequoia (15.x), the "Open Anyway" button only appears **after** you've tried to open the app and it's been blocked. Follow these steps:
 
-1. Try to open the app normally (it will be blocked)
-2. Go to **System Settings** → **Privacy & Security**
-3. Scroll down to the **Security** section
-4. You'll see a message: *"TranscribeAnything.app was blocked from use because it is not from an identified developer"*
-5. Click **"Open Anyway"**
-6. Click **"Open"** in the confirmation dialog
+1. **Try to open the app normally** (double-click) - it will be blocked
+2. **Immediately** go to **System Settings** → **Privacy & Security**
+3. Scroll down to the **Security** section (may need to scroll past other settings)
+4. Look for the message: *"TranscribeAnything.app was blocked..."* (appears at the top of Security section)
+5. Click **"Open Anyway"** (appears only after the app was blocked)
+6. Try opening the app again
+7. Click **"Open"** in the confirmation dialog
 
-![System Settings Security](https://support.apple.com/library/content/dam/edam/applecare/images/en_US/macos/macos-ventura-system-settings-privacy-security-open-anyway.png)
+**Important**: The "Open Anyway" button disappears after 30 seconds, so act quickly!
 
 ---
 
