@@ -1,7 +1,14 @@
 #!/bin/bash
 # Script to create a DMG for TranscribeAnything.app
+# Run from repository root: ./scripts/create_dmg.sh
 
 set -e
+
+# Change to repository root if running from scripts directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ "$SCRIPT_DIR" == */scripts ]]; then
+    cd "$SCRIPT_DIR/.."
+fi
 
 APP_NAME="TranscribeAnything"
 APP_PATH="TranscribeAnything/${APP_NAME}.app"
@@ -10,6 +17,7 @@ VOLUME_NAME="${APP_NAME}"
 STAGING_DIR="dmg_staging"
 
 echo "Creating DMG for ${APP_NAME}..."
+echo "Working directory: $(pwd)"
 
 # Check if app exists
 if [ ! -d "$APP_PATH" ]; then

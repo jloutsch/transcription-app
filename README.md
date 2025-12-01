@@ -2,19 +2,37 @@
 
 Local, privacy-focused audio and video transcription using OpenAI's Whisper model (via Faster Whisper). No cloud services required - everything runs on your Mac.
 
+## 📦 Download Native macOS App
+
+**TranscribeAnything.dmg** - Ready-to-use macOS application with SwiftUI interface!
+
+📥 [Download DMG from Releases](https://github.com/jloutsch/transcribe_anything/releases)
+
+See [Installation Guide](docs/INSTALLATION_GUIDE.md) for setup instructions.
+
+---
+
 ## Features
 
-- 🎙️ **Two interfaces**: Command-line and GUI
+- 🎙️ **Three interfaces**: Native macOS app, Command-line, and Python GUI
 - 🔒 **100% local processing** - No data sent to cloud services
-- 📁 **Drag and drop support** in GUI version
+- 📁 **Drag and drop support** in GUI versions
 - 🎬 **Multiple formats**: MP4, MOV, MP3, WAV, M4A, FLAC, OGG, and more
 - ⚡ **Fast transcription** using optimized Whisper models
 - 📝 **Timestamped output** for easy reference
 - 🌍 **Auto language detection**
+- 👥 **Speaker diarization** (WavLM & PyAnnote.audio)
 
 ## Quick Start
 
-### Automated Installation (Recommended)
+### Option 1: macOS Native App (Easiest)
+
+1. Download `TranscribeAnything.dmg`
+2. Open the DMG and drag the app to Applications
+3. Right-click the app → Open (first time only)
+4. See [Installation Guide](docs/INSTALLATION_GUIDE.md) for details
+
+### Option 2: Automated Installation (Python GUI)
 
 ```bash
 # Clone the repository
@@ -22,7 +40,7 @@ git clone https://github.com/jloutsch/transcription-app.git
 cd transcription-app
 
 # Run the installer
-./install.sh
+./scripts/install.sh
 ```
 
 The installer will:
@@ -34,7 +52,7 @@ The installer will:
 
 After installation, run the app with:
 ```bash
-./launch_gui.sh
+./scripts/launch_gui.sh
 ```
 
 ### Manual Installation
@@ -230,3 +248,29 @@ Issues and pull requests welcome!
 ## Credits
 
 Built with OpenAI's Whisper model and the excellent Faster Whisper implementation.
+
+## 📁 Repository Structure
+
+```
+transcription-app/
+├── TranscribeAnything.dmg          # 📱 Native macOS app (ready to use)
+├── transcribe_gui.py               # Python GUI application
+├── transcribe_cli.py               # CLI interface
+├── transcribe_videos.py            # Video transcriber
+│
+├── scripts/                        # Build & utility scripts
+│   ├── build_app.sh                # Build macOS app
+│   ├── create_dmg.sh               # Create DMG package
+│   ├── install.sh                  # Automated installer
+│   ├── launch_gui.sh               # GUI launcher
+│   └── dev/                        # Development test scripts
+│
+├── docs/                           # Documentation
+│   ├── INSTALLATION_GUIDE.md       # macOS installation help
+│   ├── GUI_INSTRUCTIONS.md         # GUI usage guide
+│   └── TEST_*.md                   # Test documentation
+│
+├── TranscribeAnything/             # SwiftUI app source code
+└── tests/                          # Test suite (47% coverage)
+```
+
